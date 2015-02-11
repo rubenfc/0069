@@ -43,11 +43,18 @@ public class LogAnalyzer
      */
     public void printHourlyCounts()
     {
-        System.out.println("Hr: Count");
-        for(int hour = 0; hour < hourCounts.length; hour++) {
-            System.out.println(hour + ": " + hourCounts[hour]);
-        }
+        //System.out.println("Hr: Count");
+        //for(int hour = 0; hour < hourCounts.length; hour++) {
+          //  System.out.println(hour + ": " + hourCounts[hour]);
+       
+          int horas = 0;
+          while (horas < hourCounts.length)
+          {
+              System.out.println(horas + ": " + hourCounts[horas]);
+              horas++;
+          }
     }
+    
     
     /**
      * Print the lines of data read by the LogfileReader
