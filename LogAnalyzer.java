@@ -79,4 +79,17 @@ public class LogAnalyzer
         }
         return accesses;
     }
+    
+    public int busiestHour()
+    {
+        int horaPunta = 0;
+        for(int cont = 0; cont < hourCounts.length ; cont++)
+        {
+            if(hourCounts[cont] > hourCounts[horaPunta])
+            {
+                horaPunta = cont;
+            }
+        }
+        return horaPunta;
+    }
 }
