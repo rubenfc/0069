@@ -23,13 +23,13 @@ public class LogAnalyzer
         // Create the reader to obtain the data.
         reader = new LogfileReader();
     }
-    
+
     public LogAnalyzer(String log)
     {
         hourCounts = new int[24];
         reader = new LogfileReader(log);
     }
-    
+
     /**
      * Analyze the hourly access data from the log file.
      */
@@ -51,17 +51,16 @@ public class LogAnalyzer
     {
         //System.out.println("Hr: Count");
         //for(int hour = 0; hour < hourCounts.length; hour++) {
-          //  System.out.println(hour + ": " + hourCounts[hour]);
-       
-          int horas = 0;
-          while (horas < hourCounts.length)
-          {
-              System.out.println(horas + ": " + hourCounts[horas]);
-              horas++;
-          }
+        //  System.out.println(hour + ": " + hourCounts[hour]);
+
+        int horas = 0;
+        while (horas < hourCounts.length)
+        {
+            System.out.println(horas + ": " + hourCounts[horas]);
+            horas++;
+        }
     }
-    
-    
+
     /**
      * Print the lines of data read by the LogfileReader
      */
@@ -69,7 +68,7 @@ public class LogAnalyzer
     {
         reader.printData();
     }
-    
+
     public int  numberOfAccesses()
     {
         int accesses = 0;
@@ -79,7 +78,7 @@ public class LogAnalyzer
         }
         return accesses;
     }
-    
+
     public int busiestHour()
     {
         int horaPunta = 0;
@@ -92,7 +91,7 @@ public class LogAnalyzer
         }
         return horaPunta;
     }
-    
+
     public int quietestHour()
     {
         int horaTranquila = 0; 
@@ -105,20 +104,34 @@ public class LogAnalyzer
         }
         return horaTranquila;
     }
-    
+
     public int twoBusiestHour()
     {
         int horaPunta = 0;
-        for(int cont = 0; cont < hourCounts.length ; cont++)
+        for(int cont = 0; cont < hourCounts.length -1 ; cont++)
         {
-            if(cont + 1 != hourCounts.length)
+            if((hourCounts[cont] + hourCounts[cont + 1]) > (hourCounts[horaPunta] + hourCounts[horaPunta + 1]))
             {
-               if((hourCounts[cont] + hourCounts[cont + 1]) > (hourCounts[horaPunta] + hourCounts[horaPunta + 1]))
-               {
-                   horaPunta = cont;
-                }
-            } 
+                horaPunta = cont;
+            }
         }
         return horaPunta;
     }
+    
+    /** 
+    * Analyze the hourly accesses in the given date
+    *
+    * @param day     The given day
+    * @param month The given month
+    * @param year  The given year
+    */
+   public void analyzeHoutly(int day, int month, int year)
+   {
+      LogEntry entry = reader.next();
+       if(day == entry.getDay()&& month == entry.getMonth() && year == entry.getYear())
+      {
+          int hour = entry.getHour();
+          hourCounts[hour]++;
+      }
+   }
 }
