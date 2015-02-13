@@ -105,4 +105,20 @@ public class LogAnalyzer
         }
         return horaTranquila;
     }
+    
+    public int twoBusiestHour()
+    {
+        int horaPunta = 0;
+        for(int cont = 0; cont < hourCounts.length ; cont++)
+        {
+            if(cont + 1 != hourCounts.length)
+            {
+               if((hourCounts[cont] + hourCounts[cont + 1]) > (hourCounts[horaPunta] + hourCounts[horaPunta + 1]))
+               {
+                   horaPunta = cont;
+                }
+            } 
+        }
+        return horaPunta;
+    }
 }

@@ -136,5 +136,16 @@ public class LogEntry implements Comparable<LogEntry>
                  dataValues[MONTH] - 1, dataValues[DAY] - 1,
                  dataValues[HOUR], dataValues[MINUTE]);
     }
-    
+    public int getDay()
+    {
+        return dataValues[DAY];
+    }
+    public int getMonth()
+    {
+        return dataValues[MONTH];
+    }
+    public int getYear()
+    {
+        return dataValues[YEAR];
+    }
 }
