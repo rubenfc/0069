@@ -92,4 +92,17 @@ public class LogAnalyzer
         }
         return horaPunta;
     }
+    
+    public int quietestHour()
+    {
+        int horaTranquila = 0; 
+        for(int cont = 0; cont < hourCounts.length ; cont++)
+        {
+            if(hourCounts[cont] < hourCounts[horaTranquila])
+            {
+                horaTranquila = cont;
+            }
+        }
+        return horaTranquila;
+    }
 }
